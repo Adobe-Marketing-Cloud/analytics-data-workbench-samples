@@ -1,21 +1,24 @@
 # Install the R packages: ggplot2, forecast
-# Save the time series file in your working directory  
-# Change the name of the file (temp.tsv) below
+install.packages("forecast")
+install.packages("ggplot2")
 
-
+# Call the two libraries
 require(ggplot2)
 require(forecast)
 
-# setwd("C:/Users/shsaini/Documents/Work/Misc/Marketing Summit/DWB Lab/")
-setwd("<YOUR WORKING DIRECTORY PATH>")
+# Set the working directory for the data
+setwd("../data/")
 
-dat <- read.delim(file = "temp.tsv", header=TRUE, stringsAsFactors=FALSE)
+dat <- read.delim(file = "tsdata.tsv", header=TRUE, stringsAsFactors=FALSE, sep="\t")
+
+# Perform the necessary formatting of the strings
 
 dat$Day <- as.Date(dat$Day,format="%m/%d/%y")
 dat$Visits <- as.numeric(gsub(",","",dat$Visits))
-dat$MobileViews <- as.numeric(gsub(",","",dat$MobileViews))
+dat$MobileViews <- as.numeric(gsub(",","",dat$Mobile.Views))
 dat$Orders <- as.numeric(gsub(",","",dat$Orders))
-dat$PageViews <- as.numeric(gsub(",","",dat$PageViews))
+dat$PageViews <- as.numeric(gsub(",","",dat$Page.Views))
+
 
 tname <- "Holiday"
 p <- ggplot(data=dat,aes(x=Day)) +
