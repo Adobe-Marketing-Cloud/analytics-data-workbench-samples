@@ -58,7 +58,7 @@ nonbuyers$PredictedRevenue <- predict.lm(fit, newdata=nonbuyers)
 #ord <- order(nonbuyers$PredictedRevenue, decreasing = TRUE)
 #nonbuyers <- nonbuyers[ord,]
 
-# Create segments based on high opportunity non-buyers
+# Density plot of predicted revenue 
 ggplot(nonbuyers, aes(x=PredictedRevenue)) + geom_density() + theme_bw(14) + xlim(250, 400)
 
 # Compute the 75 percentile of the predicted revenue
@@ -68,7 +68,7 @@ quantile(nonbuyers$PredictedRevenue, 0.75)
 exportdata <- as.data.frame(nonbuyers[nonbuyers$PredictedRevenue > 317,"TrackingID"])
 exportdata$Binary <- 1
 exportdata$TimeUTC <- round(as.numeric(Sys.time()))
-names(exportdata)[1] <- "AAMID"
+names(exportdata)[1] <- "TrackingID"
 
 # Write the export File
 write.table(exportdata, 
@@ -76,7 +76,7 @@ write.table(exportdata,
             col.names=FALSE, 
             row.names=FALSE, 
             quote=FALSE,
-            sep=", ")
+            sep=",")
 
 
 

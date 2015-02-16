@@ -19,7 +19,7 @@ dat$MobileViews <- as.numeric(gsub(",","",dat$Mobile.Views))
 dat$Orders <- as.numeric(gsub(",","",dat$Orders))
 dat$PageViews <- as.numeric(gsub(",","",dat$Page.Views))
 
-
+# Plot the data
 tname <- "Holiday"
 p <- ggplot(data=dat,aes(x=Day)) +
   geom_line(aes(y=Visits, color="Visits"), size = 1, lineend = "round") +
