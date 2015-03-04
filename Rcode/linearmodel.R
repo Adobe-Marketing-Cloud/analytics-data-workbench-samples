@@ -2,6 +2,7 @@
 ##              Build Linear Model in R             ##
 ######################################################
 
+library(ggplot2)
 
 # Set the working directory for the data
 setwd("../data/")
