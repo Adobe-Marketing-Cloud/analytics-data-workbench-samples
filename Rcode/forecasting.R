@@ -25,6 +25,7 @@ p <- ggplot(data=dat,aes(x=Day)) +
   geom_line(aes(y=MobileViews, color="MobileViews"), size = 1, lineend = "round") +
   geom_line(aes(y=Orders, color="Orders"), size = 1, lineend = "round") +
   geom_line(aes(y=PageViews, color="PageViews"), size = 1, lineend = "round") +
+  scale_color_manual("", breaks = c("Visits","MobileViews","Orders","PageViews"), values = c("cyan", "magenta","blue","green")) +
   theme_bw(base_size=14) +
   xlab("") + ylab("Value")
 print(p)
