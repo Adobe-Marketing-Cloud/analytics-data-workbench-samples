@@ -20,14 +20,11 @@ dat$Orders <- as.numeric(gsub(",","",dat$Orders))
 dat$PageViews <- as.numeric(gsub(",","",dat$Page.Views))
 
 # Plot the data
-tname <- "Holiday"
 p <- ggplot(data=dat,aes(x=Day)) +
   geom_line(aes(y=Visits, color="Visits"), size = 1, lineend = "round") +
   geom_line(aes(y=MobileViews, color="MobileViews"), size = 1, lineend = "round") +
   geom_line(aes(y=Orders, color="Orders"), size = 1, lineend = "round") +
   geom_line(aes(y=PageViews, color="PageViews"), size = 1, lineend = "round") +
-  #   scale_x_date(format = "%b-%Y") + 
-#   scale_color_manual("", breaks = c("Visits","MobileViews"), values = c("cyan", "magenta")) +
   theme_bw(base_size=14) +
   xlab("") + ylab("Value")
 print(p)
